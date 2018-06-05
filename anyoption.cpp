@@ -678,9 +678,9 @@ AnyOption::parsePOSIX( char* arg )
 int
 AnyOption::parseGNU( char *arg )
 {
-	size_t split_at = 0;
+	int split_at = 0;
 	/* if has a '=' sign get value */
-	for( size_t i = 0 ; i < strlen(arg) ; i++ ){
+	for( unsigned int i = 0 ; i < strlen(arg) ; i++ ){
 		if(arg[i] ==  equalsign ){
 			split_at = i ; /* store index */
 			i = strlen(arg); /* get out of loop */
@@ -688,7 +688,7 @@ AnyOption::parseGNU( char *arg )
 	}
 	if( split_at > 0 ){ /* it is an option value pair */
 		char* tmp = (char*) malloc(  (split_at+1)*sizeof(char) );
-		for( size_t i = 0 ; i < split_at ; i++ )
+		for( int i = 0 ; i < split_at ; i++ )
 			tmp[i] = arg[i];
 		tmp[split_at] = '\0';
 
